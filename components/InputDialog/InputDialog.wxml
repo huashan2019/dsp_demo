@@ -1,0 +1,8 @@
+<!--components/InputDialog/InputDialog.wxml-->
+<view class='mask' hidden='{{!isShowDialog}}' bindtap='hideMask'></view>
+<view class='dialog-layout' style='{{type=="text" ? "margin-top:-250rpx;" : ""}}' hidden='{{!isShowDialog}}'>
+  <text>{{title}}</text>
+  <input wx:if='{{type=="number"}}' value='{{numberValue}}' placeholder='{{language.range}}{{min}}{{language.to}}{{max}}' type='{{type}}' bindinput='inputOver' />
+  <input wx:if='{{type=="text"}}'   value='{{textValue}}'   placeholder='{{warn}}' maxlength='4'   type='{{type}}' bindinput='inputOver' />
+  <button style='background-color: {{mainColor}};' class='button' bindtap='confirm'>{{language.affirm}}</button>
+</view>

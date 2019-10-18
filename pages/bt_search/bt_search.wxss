@@ -1,0 +1,83 @@
+/* pages/bt_search/bt_search.wxss */
+
+.btStateText {
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  font-size: large;
+}
+
+.layout-land {
+  display: flex;
+  flex-direction: row;
+}
+
+.layout-port {
+  display: flex;
+  flex-direction: column;
+}
+
+.scroll {
+  height: 900rpx;
+}
+
+.list-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 20rpx 20rpx 20rpx 20rpx;
+  box-sizing: border-box;
+  border: 2rpx solid #000;
+  border-style: solid none none none;
+  border-top-color: lightgray;
+}
+
+.list-icon {
+  width: 100rpx;
+  height: 100rpx;
+}
+
+.btStateText {
+  width: 100%;
+  height: 100rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: large;
+}
+
+.text_large {
+  font-size: large;
+}
+
+.text_normal {
+  font-size: medium;
+}
+
+.text_small {
+  font-size: small;
+}
+
+
+
+.bottom-area {
+  width: 100%;
+  height: 160rpx;
+  background-color: #F5F5F5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 0rpx; 
+}
+
+.button {
+  width: 85%;
+  height: 100rpx;
+  color: #fff;
+  font-size: large;
+}

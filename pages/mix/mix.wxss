@@ -1,0 +1,27 @@
+/* pages/mix/mix.wxss */
+.adjust-layout {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.adjust-layout view{
+  margin-bottom: 10px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;  
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.adjust-layout view image{
+  height: 30px;
+  width: 30px;
+}
+.adjust-layout view text{
+  font-size: 18px;
+  text-align: center;
+  height: 30px;
+  width: 50px;
+}
+.adjust-layout view slider{
+  width: 150px;
+}

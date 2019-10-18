@@ -1,0 +1,75 @@
+<!--pages/eq/eq.wxml-->
+<wxs module="filter" src="../../utils/common.wxs"></wxs>
+<import src="../common/channel_scroll.wxml" />
+<view class='container'>
+  <template is="channel_scroll" data="{{channel_scroll:channel_scroll}}" />
+  <view class='eq-graph'>
+    <view class='eq-graph-title'>
+      <text wx:for="{{eq_boost_lists}}" wx:key="">{{item}}</text>
+    </view>
+    <view class='eq-canvas'>
+      <canvas style='height:{{canvas_height}}px;width:{{canvas_width}}px' canvas-id='graph-line'></canvas>
+      <canvas style='height:{{canvas_height}}px;width:{{canvas_width}}px' canvas-id='graph-curve'></canvas>
+    </view>
+  </view>
+  <view class='eq-list'>
+    <view class='eq-list-head'>
+      <text style='width:10%'>{{eq_name.id}}</text>
+      <text style='width:16%'>{{eq_name.freq}}</text>
+      <text style='width:10%'>{{eq_name.q}}</text>
+      <text style='width:10%'>{{eq_name.boost}}</text>
+      <text style='width:18%'>{{eq_name.boost_min}}</text>
+      <text style='width:18%'>{{eq_name.boost_0}}</text>
+      <text style='width:18%'>{{eq_name.boost_max}}</text>
+      <text style='width:10%'>{{eq_name.isThrough}}</text>  
+    </view>
+    <scroll-view style='height:{{eq_scroll_height}}px' class='eq-list-scroll' scroll-y='true'>
+      <view wx:for="{{eqs}}" wx:for-index="index" wx:key="id">
+        <text style='width:10%'>{{item.id}}</text>
+        <text style='width:16%' id='{{index}}' bindtap='changeFreq' bindlongpress='changeFreqInput'>{{item.freq}}</text>
+        <text style='width:10%' id='{{index}}' bindtap='changeQ'    bindlongpress='changeQInput'>{{filter.toFix(item.q/100,2)}}</text>
+        <text style='width:10%' id='{{index}}' bindtap='changeBoost'bindlongpress='changeBoostInput'>{{filter.toFix(item.boost/100-24,1)}}</text>
+        <view style='width:54%' >
+          <slider id='{{index}}' bindchange="changeSlider" bindchanging='changingSlider' value='{{item.boost/100-24}}'  min="-12" max="12" activeColor='{{mainColor}}' backgroundColor='#bfc2c8' block-color='{{mainColor}}'/>
+        </view>
+        <checkbox-group style='width:10%' id='{{index}}' bindchange="checkboxChange">
+          <checkbox class='eq-check' value="{{item.id}}" checked="{{item.isThrough}}" />
+        </checkbox-group>
+        </view>
+    </scroll-view>
+  </view>
+  <view class='eq-button'>
+    <button class='button_bg_img' bindtap='resetEQ'>{{language.resetEQ}}</button>
+    <button class='button_bg_img' bindtap='throughAll'>{{isThroughAll ? language.cancelThrough : language.throughAll}}</button>
+  </view>
+</view>
+<SliderDialog isShowDialog='{{isShowDialog==1}}' 
+  title='{{language.eq_freq}}（{{language.eq_id}} {{eqs[dialog_id].id}}）' 
+  value='{{eqs[dialog_id].freq}}' 
+  step='1' min='20' max='20000' toFixed='0'
+  catch:_dragSlider='confirmFreq' catch:confirm='hideMask'/>
+<InputDialog isShowDialog='{{isShowDialog==2}}' 
+  title='{{language.eq_freq}}（{{language.eq_id}} {{eqs[dialog_id].id}}）' 
+  numberValue='{{eqs[dialog_id].freq}}' 
+  min='20' max='20000' toFixed='0'
+  catch:_dragInput='confirmFreq' catch:confirm='hideMask'/>
+<SliderDialog isShowDialog='{{isShowDialog==3}}' 
+  title='{{language.eq_q}}（{{language.eq_id}} {{eqs[dialog_id].id}}）' 
+  value='{{eqs[dialog_id].q/100}}' 
+  step='0.01' min='0.27' max='15' toFixed='2'
+  catch:_dragSlider='confirmQ' catch:confirm='hideMask'/>
+<InputDialog isShowDialog='{{isShowDialog==4}}' 
+  title='{{language.eq_q}}（{{language.eq_id}} {{eqs[dialog_id].id}}）' 
+  numberValue='{{eqs[dialog_id].q/100}}' 
+  min='0.27' max='15' toFixed='2'
+  catch:_dragInput='confirmQ' catch:confirm='hideMask'/>
+<SliderDialog isShowDialog='{{isShowDialog==5}}' 
+  title='{{language.eq_boost}}（{{language.eq_id}} {{eqs[dialog_id].id}}）' 
+  value='{{filter.toFix(eqs[dialog_id].boost/100-24,1)}}' 
+  step='0.1' min='-12' max='12' toFixed='1'
+  catch:_dragSlider='confirmBoost' catch:confirm='hideMask'/>
+<InputDialog isShowDialog='{{isShowDialog==6}}' 
+  title='{{language.eq_boost}}（{{language.eq_id}} {{eqs[dialog_id].id}}）' 
+  numberValue='{{filter.toFix(eqs[dialog_id].boost/100-24,1)}}' 
+  min='-12' max='12' toFixed='1'
+  catch:_dragInput='confirmBoost' catch:confirm='hideMask'/>

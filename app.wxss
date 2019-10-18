@@ -1,0 +1,33 @@
+/**app.wxss**/
+@import "common.wxss";
+@import "common_button.wxss";
+button::after{
+  border: none;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+} 
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+.scroll-channel {
+  white-space: nowrap;
+  width: 100%;
+  height: 35px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+.scroll-channel label{
+ display: inline-block;
+ text-align: center;
+ padding: 5px 0;
+}

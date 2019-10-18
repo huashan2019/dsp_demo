@@ -1,0 +1,62 @@
+/* pages/delay/delay.wxss */
+.delay-layout {
+  width: 100%;
+  height: 960rpx;
+  z-index: 0;
+}
+.speaker-layout {
+  width: 460rpx;
+  height: 960rpx;
+  position: relative;
+  left: 145rpx;
+  font-size: 35rpx;
+}
+
+.img-car {
+  width: 420rpx;
+  height: 920rpx;
+  position: absolute;
+  top: 20rpx;
+  left: 20rpx;
+}
+.button-mute{
+  width: 90rpx;
+  height: 90rpx;
+  position: absolute;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color:transparent;
+}
+.button-mute::after {
+  border: none;
+}
+.channelName{
+  position: absolute;
+  text-align: center;
+}
+.textDelay{
+  width: 110rpx;
+  position: absolute;
+  text-align: center;
+}
+.button-layout {
+  width: 90%;
+  height: 150rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.button-layout button{
+  width: 160rpx;
+  height: 65rpx;
+  background-repeat: no-repeat;
+  background-size: contain;
+  font-size: 30rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+}
+.button_choose_color{
+  color: #ffffff;
+}

@@ -1,0 +1,9 @@
+<template name="channel_scroll">
+  <scroll-view class="scroll-channel" scroll-x="true">
+    <radio-group bindchange="radioCheckedChange">
+      <label style="width:{{channel_scroll.label_width}}px;{{channel_scroll.channelVal==index?'background-color:'+channel_scroll.bg_color+';color: #eee;':''}}" wx:for="{{channel_scroll.channels}}" wx:key="key" wx:for-index="index">
+        {{item}}<radio value="{{index}}" hidden="true"/>
+      </label>
+    </radio-group>
+  </scroll-view>
+</template>

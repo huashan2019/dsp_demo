@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "主页",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "PasswordDialog": "/components/PasswordDialog/PasswordDialog",
+    "InputDialog": "/components/InputDialog/InputDialog"
+  }
+}

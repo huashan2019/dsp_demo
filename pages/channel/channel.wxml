@@ -1,0 +1,54 @@
+<!--pages/channel/channel.wxml-->
+<wxs module="filter" src="../../utils/common.wxs"></wxs>
+<import src="../common/channel_scroll.wxml" />
+<view class='container'>
+  <template is="channel_scroll" data="{{channel_scroll:channel_scroll}}" />
+  <view class='filter_layout filter_layout_bgimg'>
+    <text>{{language.filter}}</text>
+    <view class='filter-content'>
+      <view wx:for='{{filter_data}}' wx:key="" wx:for-index="index" class='high-low-pass'>
+        <view class='layout-land-center'>
+          <text>{{item.Name}}</text>
+          <switch id='{{index}}' style='zoom:{{switch_zoom}}' checked='{{item.En}}' color='{{mainColor}}' bindchange='switchPass'></switch>
+        </view>
+        <button id='{{index}}' bindtap="changeType" class='button_bg_img'>{{filter_name.type[item.Type]}}</button>
+        <button id='{{index}}' bindtap="changeFreq" bindlongpress='changeFreqInput' class='button_bg_img'>{{item.Freq}}Hz</button>
+        <button id='{{index}}' bindtap="changeSlope" class='button_bg_img'>{{filter_name.slope[item.Slope]}}</button>
+      </view>
+    </view>
+  </view>
+  <view class='phase_layout phase_layout_bgimg'>
+    <view class='layout-land'>
+      <image bind:tap='setVolumeDown' src='/res/ic_minus_n.png'></image>
+      <text>{{filter.toFix(volume/100-80,1)}}dB</text>
+      <image bind:tap='setVolumeUp' src='/res/ic_plus_n.png'></image>
+    </view>
+    <slider bindchange="changeSlider" bindchanging='changingSlider' min="-80" max="0" activeColor='{{mainColor}}' backgroundColor='#bfc2c8' block-color='{{mainColor}}' value='{{volume/100-80}}'></slider>
+    <view class='phase_button'>
+      <button bindtap='changePhase' class='button_bg_img'>{{language.phase_name[filter_data[0].Phase?0:1]}}</button>
+      <text bindtap='channelNameChange' >{{channel_out_name}}</text>
+      <image bindtap='muteOrunmute' src="{{channel_mute?'/res/mute_s.png':'/res/mute_n.png'}}"></image>
+    </view>
+  </view>
+  <view class='button_layout'>
+    <button bindtap='dataReset' class='button_bg_img'>{{language.reset}}</button>
+    <view>
+      <text>{{language.ganged}}</text>
+      <switch style='zoom:{{switch_zoom}}' checked='{{is_joint}}' color='{{mainColor}}' bindchange='switchJoint'></switch>
+    </view>
+  </view>
+</view>
+<SliderDialog isShowDialog='{{isShowDialog==1}}' 
+  title='{{filter_data[dialog_id].Name}}{{language.cutOffFrequency}}' 
+  value='{{filter_data[dialog_id].Freq}}' 
+  step='1' min='20' max='20000'
+  catch:_dragSlider='confirmFreq' catch:confirm='hideMask'/>
+<InputDialog isShowDialog='{{isShowDialog==2}}' 
+  title='{{filter_data[dialog_id].Name}}{{language.cutOffFrequency}}' 
+  numberValue='{{filter_data[dialog_id].Freq}}' 
+  min='20' max='20000'
+  catch:_dragInput='confirmFreq' catch:confirm='hideMask'/>
+<InputDialog isShowDialog='{{isShowDialog==3}}' 
+  title='{{language.reName}}' 
+  textValue='' type='text' warn='{{language.reNameWarn}}'
+  catch:_dragInput='confirmRename' catch:confirm='hideMask'/>

@@ -1,0 +1,13 @@
+<!--components/SliderDialog/SliderDialog.wxml-->
+<wxs module="filter" src="../../utils/common.wxs"></wxs>
+<view class='mask' hidden='{{!isShowDialog}}' bindtap='hideMask'></view>
+<view class='dialog-layout' hidden='{{!isShowDialog}}'>
+  <text>{{title}}</text>
+  <text>{{filter.toFix(value/ratio,toFixed)}}</text>
+  <slider style='width:600rpx;' bindchange="_dragSlider" bindchanging='_dragSlidering' step='{{step}}' min="{{min}}" max="{{max}}" activeColor='{{mainColor}}' backgroundColor='#bfc2c8' block-color='{{mainColor}}' value='{{value}}'></slider>
+  <view class='layout-land-delay'>
+    <image bind:tap='set_dragDown' src='/res/ic_minus_n.png'></image>
+    <button bindtap='hideMask' hover-class='button-hover' class='button_bg_img'>{{language.affirm}}</button>
+    <image bind:tap='set_dragUp' src='/res/ic_plus_n.png'></image>
+  </view>
+</view>

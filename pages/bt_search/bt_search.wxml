@@ -1,0 +1,19 @@
+<!--pages/bt_search/bt_search.wxml-->
+<view class='container'>
+  <text class='btStateText'>{{isBleWork?language.bluetoothConnected:language.bluetoothDisconnected}}</text>
+  <scroll-view scroll-y="true" class='scroll'>
+    <block wx:for="{{devices_list}}" wx:for-index="index" wx:key="">
+      <view class="list-item" id="{{index}}" data-deviceId="{{item.deviceId}}" data-advertisData='{{item.advertisData}}' bindtap="createBLEConnection">
+        <!-- <image class='list-icon' src="/res/bluetooth.png"></image>  -->
+        <view class='layout-port'>
+          <text class='text_large'>{{item.name}}</text>
+          <text class='text_small'>ID: {{item.advertisData}}</text>
+          <text class='text_small'>RSSI: {{item.RSSI}}</text>
+        </view>
+      </view>
+    </block>
+  </scroll-view>
+  <view class='bottom-area'>
+    <button class="button" style='opacity:{{opacity}};background-color: {{mainColor}};' bindtap="startOrStopScan">{{isScanning?language.stopSearch:language.searchEquipment}}</button>
+  </view>
+</view>

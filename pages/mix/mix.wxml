@@ -1,0 +1,15 @@
+<!--pages/mix/mix.wxml-->
+<wxs module="filter" src="../../utils/common.wxs"></wxs>
+<import src="../common/channel_scroll.wxml" />
+<view class='container'>
+  <template is="channel_scroll" data="{{channel_scroll:channel_scroll}}" />
+  <scroll-view style='height:{{scroll_height}}px;width:{{scroll_width}}px' bindscrolltoupper="bindScrollMix" class='adjust-layout' scroll-y="true">
+    <view class='adjust-layout-view-bgimg' style='height:{{channel_in_height}}px' wx:for="{{channel_in_list}}" wx:key="" wx:for-index="index">
+      <text>{{item.name}}</text>
+      <image id='{{index}}' bind:tap='setVolumeDown' src='/res/ic_minus_n.png'></image>
+      <text>{{filter.round(item.vol/1.44)}}</text>
+      <image id='{{index}}' bind:tap='setVolumeUp' src='/res/ic_plus_n.png'></image>
+      <slider id='{{index}}' value='{{filter.round(item.vol/1.44)}}' style='width:{{channel_in_slider_width}}px' bindchange="changeSlider" bindchanging='changingSlider' min="0" max="100" activeColor='{{mainColor}}' backgroundColor='#bfc2c8' block-color='{{mainColor}}'></slider>
+    </view>
+  </scroll-view>
+</view>

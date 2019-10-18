@@ -1,0 +1,55 @@
+{
+  "pages": [
+    "pages/main/main",
+    "pages/eq/eq",
+    "pages/delay/delay",
+    "pages/channel/channel",
+    "pages/bt_search/bt_search",
+    "pages/mix/mix",
+    "pages/music/music"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#eeedf0",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "backgroundColor": "#eeedf0",
+    "color": "#000000",
+    "selectedColor": "#000000",
+    "list": [
+      {
+        "pagePath": "pages/delay/delay",
+        "text": "延时",
+        "iconPath": "res/tab_ic_delay_n.png",
+        "selectedIconPath": "res/tab_ic_delay_s.png"
+      },
+      {
+        "pagePath": "pages/channel/channel",
+        "text": "通道",
+        "iconPath": "res/tab_ic_channel_n.png",
+        "selectedIconPath": "res/tab_ic_channel_s.png"
+      },
+      {
+        "pagePath": "pages/main/main",
+        "text": "主页",
+        "iconPath": "res/tab_ic_home_n.png",
+        "selectedIconPath": "res/tab_ic_home_s.png"
+      },
+      {
+        "pagePath": "pages/eq/eq",
+        "text": "EQ",
+        "iconPath": "res/tab_ic_eq_n.png",
+        "selectedIconPath": "res/tab_ic_eq_s.png"
+      },
+      {
+        "pagePath": "pages/mix/mix",
+        "text": "混音",
+        "iconPath": "res/tab_ic_mixing_n.png",
+        "selectedIconPath": "res/tab_ic_mixing_s.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

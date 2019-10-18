@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "延时",
+  "enablePullDownRefresh": true,
+  "usingComponents": {
+    "SliderDialog": "/components/SliderDialog/SliderDialog",
+    "InputDialog": "/components/InputDialog/InputDialog"
+  }
+}

@@ -1,0 +1,29 @@
+<!--pages/music/music.wxml-->
+<wxs module="filter" src="../../utils/common.wxs"></wxs>
+<view class='container'>
+  <view class='music_list_title'>
+    <image src='/res/music_img.png'></image>
+    <text style='color:{{mainColor}}'>{{language.songList}}</text>
+  </view>
+  <image class='music_line' src='/res/music_line.png'></image>
+  <scroll-view lower-threshold="100rpx" bindscrolltolower="searchScrollLower" class='music_list_scroll' style='height:{{scroll_height}}px;' scroll-y="true">
+    <view wx:for="{{player_data.SongNameList}}" wx:key="" wx:for-index="index" id='{{index+1}}' bindtap='Choose_Song' class='music_list {{player_data.PlayNum==index?"music_list_choose music_list_choose_bgimg":""}}'>
+      <view class='song_name'>{{filter.prefixInteger(index+1,player_data.SongNameList.length)}}.{{item}}</view>
+      <!--<view class='song_time'>03:45</view>-->
+    </view>
+  </scroll-view>
+  <image class='music_line' src='/res/music_line.png'></image>
+  <view class='music_ctl music_ctl_bgimg'>
+    <view class='music_song'>{{player_data.SongName}}</view>
+    <view class='music_play'>
+      <image bindtap='Ctl_prev' class='image_prev' src='/res/music_prev.png'></image>
+      <image bindtap='Ctl_play' class='image_play' src='{{player_data.PlayPause_S==2 ? "/res/music_play.png" : "/res/music_pause.png"}}'></image>
+      <image bindtap='Ctl_next' class='image_next' src='/res/music_next.png'></image>
+    </view>
+    <view class='musci_state'>
+      <button bindtap='Cycle_random' class='button_bg_1 {{player_data.Cycle_S==4 ? "button_1_choose" : ""}}'></button>
+      <button bindtap='Cycle_one'    class='button_bg_2 {{player_data.Cycle_S==2 ? "button_2_choose" : ""}}'></button>
+      <button bindtap='Cycle_all'    class='button_bg_3 {{player_data.Cycle_S==3 ? "button_3_choose" : ""}}'></button>
+    </view>
+  </view>
+</view>

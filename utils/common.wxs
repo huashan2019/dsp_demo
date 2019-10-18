@@ -1,0 +1,29 @@
+
+function intNum (index) {
+  if (index < 10) {
+    return 1
+  } else if (index < 100) {
+    return 2
+  } else if (index < 1000) {
+    return 3
+  } else if (index < 10000) {
+    return 4
+  }
+}
+var filter = {
+  round: function (value) {
+    return Math.round(value)
+  },
+  toFix: function (value, num) {
+    return value.toFixed(num)
+  },
+  prefixInteger: function (num, length) {
+    var index = "0000000000000000" + num
+    return index.slice(-intNum(length));
+  },
+}
+module.exports = {
+  round: filter.round,
+  toFix: filter.toFix,
+  prefixInteger: filter.prefixInteger
+}

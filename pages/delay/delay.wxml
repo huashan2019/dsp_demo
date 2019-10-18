@@ -1,0 +1,21 @@
+<!--pages/delay/delay.wxml-->
+<wxs module="filter" src="../../utils/common.wxs"></wxs>
+<view class='container'>
+  <view class='delay-layout' >
+    <view class='speaker-layout'>
+      <image class='img-car' src='/res/car_bg.png'></image>
+      <button wx:for="{{button_position}}" wx:key="id" wx:for-index="index" wx:if='{{!channelMute[index]}}' id='{{index}}' bindtap='muteChange' style='top:{{item.top}}rpx; left:{{item.left}}rpx;'  class='{{item.unMuteClass}}  button-mute'></button>
+      <button wx:for="{{button_position}}" wx:key="id" wx:for-index="index" wx:if='{{channelMute[index]}}'  id='{{index}}' bindtap='muteChange' style='top:{{item.top}}rpx; left:{{item.left}}rpx;'  class='{{item.MuteClass}}  button-mute'></button>
+      <text wx:for="{{button_position}}" wx:key="" wx:for-index="index" id='{{index}}' bindtap='delayChange' style='top:{{item.CT_Top}}rpx; left:{{item.CT_Left}}rpx; color:{{mainColor}}' class='channelName'>{{channelOutName[index]}}</text>
+      <text wx:for="{{button_position}}" wx:key="" wx:for-index="index" style='top:{{item.DT_Top}}rpx; left:{{item.DT_Left}}rpx;' class='textDelay'>{{filter.toFix(delayData[index]/uniteList[uniteFlag].ratio,2)}}</text>
+    </view>
+  </view>
+  <view class="button-layout">
+    <button wx:for="{{uniteList}}" wx:key="" wx:for-index="index" id='{{index}}' bindtap='uniteChoose' class='button_bg_img {{uniteFlag==index ? "button_choose button_choose_color":""}}'>{{item.name}}</button>
+  </view>
+</view>
+<SliderDialog isShowDialog='{{isShowDialog==1}}' 
+  title='{{channelOutName[dialog_id]}}{{language.delaySet}}' 
+  value='{{delayData[dialog_id]}}' ratio='{{uniteList[uniteFlag].ratio}}'
+  step='1' min='0' max='1000' toFixed='2'
+  catch:_dragSlider='confirmDelay' catch:confirm='hideMask'/>

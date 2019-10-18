@@ -1,0 +1,126 @@
+/* pages/channel/channel.wxss */
+.filter_layout {
+  height: 490rpx;
+  width: 95%;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.filter_layout text {
+  margin-top: 15rpx;
+  height: 65rpx;
+}
+.filter-content {
+  height: 400rpx;
+  width: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+}
+.high-low-pass{
+  height: 100%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.high-low-pass button{
+  height: 64rpx;
+  width: 220rpx;
+  font-size: 35rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+.high-low-pass button::after {
+  border: none;
+}
+.layout-land-center switch {
+  margin-left: 30rpx;
+  zoom: 1.0;
+}
+
+.phase_layout {
+  margin-top: 30rpx;
+  height: 340rpx;
+  width: 95%;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.phase_layout slider{
+  width: 500rpx;
+}
+.layout-land {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center; 
+}
+.layout-land image{
+  width: 60rpx;
+  height: 60rpx;
+}
+.layout-land text{
+  width: 200rpx;
+  text-align: center;
+}
+.phase_button {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content:space-around;
+}
+.phase_button image{
+  width: 160rpx;
+  height: 64rpx;
+}
+.phase_button button{
+  width: 160rpx;
+  height: 64rpx;
+  font-size: 35rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  margin: 0;
+}
+
+.button_layout {
+  height: 150rpx;
+  width: 95%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+.button_layout view{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.button_layout button{
+  width: 160rpx;
+  height: 64rpx;
+  font-size: 35rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  margin: 0;
+}
+.button_layout switch {
+  margin-left: 20rpx;
+}

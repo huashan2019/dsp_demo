@@ -1,0 +1,65 @@
+<!--pages/main/main.wxml-->
+<wxs module="filter" src="../../utils/common.wxs"></wxs>
+<view class='container'>
+  <view class='layout-logo'>
+    <image wx:if='{{musicPlayer}}' class='img-menu' style='left:20rpx;' catchtap='showMusic' src='/res/music.png'></image>
+    <image class='img-logo' src='/res/img_logo.png'></image>
+    <image class='img-menu' catchtap='showMenu' src='/res/menu_n.png'></image>
+  </view>
+  <view class='layout-setting'>
+    <button bindtap='advancedSet' class='button_bg_img'>{{language.advanceSetup}}</button>
+    <button bindtap='disconnectBT' wx:if='{{isBleWork}}' class='button_bg_img'>{{language.connected}}</button>
+    <view wx:else >{{language.unbound}}</view>
+    <button bindtap='gotoBT' class='button_bg_img'>{{language.blueTooth}}</button>
+  </view>
+  <view class='scene-mode'>
+    <text>{{language.modeChoose}}</text>
+    <block wx:for="{{mode_list}}" wx:key="">
+      <view class='scene-mode-line'>
+        <block wx:for="{{item}}" wx:key="">
+          <view class='scene'>
+            <image id='{{item.id}}' src="/res/mode_{{item.id}}_{{(curr_mode==item.id||choose_mode==item.id)?'s':'n'}}.png"  bindtap='setMode'  bindlongpress='storeMode'></image>
+            <text>{{(curr_mode==item.id&&rename.length) ? rename : (item.name ? item.name : item.defaultName)}}</text>
+          </view>
+        </block>
+      </view>
+    </block>
+  </view>
+  <view hidden='{{!isLogin}}' class='layout-vol layout-vol-bgimg'>
+    <view class='layout-vol-info'>
+      <view>
+        <switch style='zoom:{{switch_zoom}}' checked='{{volLockChecked}}' color='{{mainColor}}' bindchange='volLockSwitch'></switch>
+        <text>{{volLockChecked ? language.volLock : language.mainVol}}</text>
+        <text>{{volLockChecked ? filter.toFix(volumeLock/100-80,1) : filter.toFix(volume/100-80,1)}}dB</text>
+      </view>
+      <image  bindtap='muteOrunmute' src="{{mute?'/res/mute_s.png':'/res/mute_n.png'}}"></image>
+    </view>
+    <view class='layout-slider'>
+      <image bind:tap='setVolumeDown' src='/res/vol_down.png'></image>
+      <slider value='{{volLockChecked ? volumeLock/100-80 : volume/100-80}}' class='slider' bindchange="changeSlider" bindchanging='changingSlider' min="-80" max="0" activeColor='{{mainColor}}' backgroundColor='#bfc2c8' block-color='{{mainColor}}'/>
+      <image bind:tap='setVolumeUp' src='/res/vol_up.png'></image>
+    </view>
+  </view>
+  <view hidden='{{isLogin}}' class='layout-vol layout-vol-bgimg'>
+    <view class='layout-vol-info'>
+      <view>
+        <text>{{language.volume}}</text>
+        <text>{{vol}}</text>
+      </view>
+      <image  bindtap='muteOrunmute' src="{{mute?'/res/mute_s.png':'/res/mute_n.png'}}"></image>
+    </view>
+    <view class='layout-slider'>
+      <image bind:tap='setVolDown' src='/res/vol_down.png'></image>
+      <slider value='{{vol}}' class='slider' bindchange="changeSliderVol" bindchanging='changingSliderVol' min="0" max="{{volMax}}" activeColor='{{mainColor}}' backgroundColor='#bfc2c8' block-color='{{mainColor}}'/>
+      <image bind:tap='setVolUp' src='/res/vol_up.png'></image>
+    </view>
+  </view>
+</view>
+<PasswordDialog isShowDialog='{{isShowDialog==1}}' 
+  title='{{language.passwordTitle}}' 
+  catch:_dragPassword='confirmPassword' 
+  catch:confirm='hideMask' />
+<InputDialog isShowDialog='{{isShowDialog==2}}' 
+  title='{{language.reName}}' 
+  textValue='' type='text' warn='{{language.reNameWarn}}'
+  catch:_dragInput='confirmRename' catch:confirm='hideMask'/>
