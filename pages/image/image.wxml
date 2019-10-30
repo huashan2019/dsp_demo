@@ -1,0 +1,8 @@
+<!--pages/image/image.wxml-->
+<text>pages/image/image.wxml</text>
+<!--
+  1.image组件可以写成单标签，也可以写成双标签
+  2.image组件默认有自己的大小：320*240
+  3.image组件时一个行内块级元素（inline-block）
+-->
+<image  src='../../res/car_bg.png'/>

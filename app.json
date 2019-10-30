@@ -1,12 +1,15 @@
 {
   "pages": [
+    "pages/Demo/Demo",
     "pages/main/main",
     "pages/eq/eq",
     "pages/delay/delay",
     "pages/channel/channel",
     "pages/bt_search/bt_search",
     "pages/mix/mix",
-    "pages/music/music"
+    "pages/music/music",
+    "pages/image",
+    "pages/image/image"
   ],
   "window": {
     "backgroundTextStyle": "dark",

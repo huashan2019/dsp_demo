@@ -1,0 +1,23 @@
+<!--pages/Demo/Demo.wxml-->
+<text>pages/Demo/Demo.wxml</text>
+<text selectable>\n hello world\n</text>
+<text>\n 我是一个小程序\n</text>
+<button size="mini">登录</button>
+<button size="mini" type="primary">按钮</button>
+<button size="mini" type="default">按钮</button>
+<button size="mini" type="warn">按钮</button>
+<button size="mini" type="plain">按钮</button>
+<button size="mini" disabled>按钮</button>
+<button size="mini"  loading hover-class="pressed">按钮</button>
+<view class='box'>hahahaha</view>
+<view>heiheihei</view>
+<image src="../../res/car_bg.png" ></image>
+<image src="/res/car_bg.png" ></image>
+<image src="http://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg" ></image>
+<view>-----------------------------------------------------------------</view>
+<image wx for="{{10}}"
+  src="http://res.wx.qq.com/wxdoc/dist/assets/img/0.4cb08bb4.jpg"
+  bindload="handleImageLoad"
+  lazy-load
+   ></image>
+
